@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Products Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Depozit</a>
+</nav>
+<br>
+<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Produs nou </h1>
+				<div class = "card-body">
+					<form th:action="@{/products}" th:object = "${product}" method="POST">
+					<div class ="form-group">
+							<label> Numar Factura </label>
+							<input
+							type = "text"
+							name = "numarFactura"
+							th:field = "*{numarFactura}"
+							class = "form-control"
+							placeholder= "Numar Factura" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Data factura </label>
+							<input
+							type = "text"
+							name = "data"
+							th:field = "*{data}"
+							class = "form-control"
+							placeholder= "Data" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Nume Produs </label>
+							<input
+							type = "text"
+							name = "name"
+							th:field = "*{name}"
+							class = "form-control"
+							placeholder="Nume Produs" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Cantitate Produs (kg)</label>
+							<input
+							type = "text"
+							name = "cantitate"
+							th:field = "*{cantitate}"
+							class = "form-control"
+							placeholder="Cantitate Produs"
+							/>
+						</div>
+						
+						
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+							Salveaza
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Products Management System</title>
+<link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+ crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Depozit</a>
+</nav>
+
+	<div class ="container">
+		<div class = "row">
+			<h1> Lista Produse </h1>
+		</div>
+		
+		<div class = "row">
+			<div class = "col-lg-3">
+				<a th:href = "@{/products/new}" class = "btn btn-primary btn-sm mb-3"> Adauga produs</a>
+			</div>
+		</div>
+		<table class = "table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+				   <th>Numar Factura</th>
+				    <th> Data </th>
+					<th> Nume Produs</th>
+					<th> Cantitate Produs</th>
+					<th> Actiuni </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "product: ${products}">
+				    <td th:text = "${product.numarFactura}"></td>
+				    <td th:text = "${product.data}"></td>
+					<td th:text = "${product.name}"></td>
+					<td th:text = "${product.cantitate}"></td>
+					
+					<td>
+						<a th:href = "@{/products/edit/{id}(id=${product.id})}"
+						 class = "btn btn-primary">Actualizare Produs</a>
+						
+						<a th:href = "@{/products/delete/{id}(id=${product.id})}"
+						 class = "btn btn-danger">Scoatere produs</a>
+						 
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+	</div>
+</body>
+</html>
