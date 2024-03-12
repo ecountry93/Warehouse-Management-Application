@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class AplicatieGestiuneDepozitApplication {
+public class AplicatieGestiuneDepozit {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AplicatieGestiuneDepozitApplication.class, args);
