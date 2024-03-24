@@ -11,65 +11,73 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Depozit</a>
+  <a class="navbar-brand" href="#">Warehouse</a>
 </nav>
+
 <br>
 <br>
 	<div class = "container">
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 class = "text-center"> Produs nou </h1>
+				<h1 class = "text-center"> Update Product </h1>
 				<div class = "card-body">
-					<form th:action="@{/products}" th:object = "${product}" method="POST">
+					<form th:action="@{/products/update/{id} (id=${product.id})}" th:object = "${product}" method="POST">
 					<div class ="form-group">
-							<label> Numar Factura </label>
+							<label> Bill Number </label>
 							<input
 							type = "text"
-							name = "numarFactura"
-							th:field = "*{numarFactura}"
+							name = "billNumber"
+							th:field = "*{billNumber}"
 							class = "form-control"
-							placeholder= "Numar Factura" 
+							placeholder= "Bill Number" 
 							/>
+							<span th:if="${#fields.hasErrors('billNumber')}" class="text-danger" th:errors="*{billNumber}">
+							</span>
 						</div>
 						
 						<div class ="form-group">
-							<label> Data factura </label>
+							<label> Date </label>
 							<input
-							type = "text"
-							name = "data"
-							th:field = "*{data}"
+							type = "date"
+							name = "date"
+							th:field = "*{date}"
 							class = "form-control"
-							placeholder= "Data" 
+							 placeholder= "Date"
 							/>
+							<span th:if="${#fields.hasErrors('date')}" class="text-danger" th:errors="*{date}">
+							</span>
 						</div>
 						
 						<div class ="form-group">
-							<label> Nume Produs </label>
+							<label> Product Name </label>
 							<input
 							type = "text"
 							name = "name"
 							th:field = "*{name}"
 							class = "form-control"
-							placeholder="Nume Produs" 
+							placeholder="Product Name" 
 							/>
+							<span th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}">
+							</span>
 						</div>
 						
 						<div class ="form-group">
-							<label> Cantitate Produs (kg)</label>
+							<label> Product Quantity (SI)</label>
 							<input
 							type = "text"
 							name = "cantitate"
-							th:field = "*{cantitate}"
+							th:field = "*{quantity}"
 							class = "form-control"
-							placeholder="Cantitate Produs"
+							placeholder="Product Quantity"
 							/>
+							<span th:if="${#fields.hasErrors('quantity')}" class="text-danger" th:errors="*{quantity}">
+							</span>
 						</div>
 						
-						
-						
+					
 						<div class = "box-footer">
 							<button type="submit" class = "btn btn-primary">
-							Salveaza
+							Save
 							</button>
 						</div>
 					</form>

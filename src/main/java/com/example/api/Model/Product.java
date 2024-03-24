@@ -1,50 +1,70 @@
 package com.example.api.Model;
 
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "produse")
+@Table(name = "product")
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
-	@Column(name = "numarFactura")
-	public int numarFactura;
-	@Column(name = "data")
-	public String data;
+	
+	
+	@NotNull(message= "this field cannot be null")
+	@Min(1)
+	@Column(name = "billNumber")
+	public Integer billNumber;
+	
+	@NotNull(message= "this field cannot be null")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "date")
+	public Date date;
+	
+
+	@NotNull (message= "this field cannot be null")
+	@Size(min=2, max=50)
 	@Column(name = "name")
 	public String name;
-	@Column(name = "cantitate")
-	public double cantitate;
+	
+	
+	@NotNull(message= "this field cannot be null")
+	@Min(1)
+	@Column(name = "quantity")
+	public Double quantity;
 	
 	
 	public Product(){
-		
-	}
-	
-	public Product(long id,  int numarFactura , String data, String name, double cantitate) {
-		super();
-		this.id = id;
-		this.numarFactura = numarFactura;
-		this.data = data;
-		this.name = name;
-		this.cantitate= cantitate;
-		
-	}
-	
-	public int getNumarFactura() {
-		return numarFactura;
 	}
 
-	public void setNumarFactura(int numarFactura) {
-		this.numarFactura = numarFactura;
+	public Product(long id,  Integer billNumber , Date date, String name, Double quantity) {
+		this.id = id;
+		this.billNumber = billNumber;
+		this.date = date;
+		this.name = name;
+		this.quantity= quantity;
+	}
+	
+	public Integer getBillNumber() {
+		return billNumber;
+	}
+
+	public void setBillNumber(Integer billNumber) {
+		this.billNumber = billNumber;
 	}
 
 	public String getName() {
@@ -57,25 +77,25 @@ public class Product {
 	}
 
 
-	public double getCantitate() {
-		return cantitate;
+	public Double getQuantity() {
+		return quantity;
 	}
 
 
-	public void setCantitate(double cantitate) {
-		this.cantitate = cantitate;
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
 	}
 
 
-	public String getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
 
 
-	public void setData(String data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
-
+	
 	public long getId() {
 		return id;
 	}
