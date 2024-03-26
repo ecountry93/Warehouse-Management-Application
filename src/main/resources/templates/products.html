@@ -9,45 +9,46 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
  crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Depozit</a>
+  <a class="navbar-brand" href="#">Warehouse</a>
 </nav>
 
 	<div class ="container">
 		<div class = "row">
-			<h1> Lista Produse </h1>
+			<h1> Products List </h1>
 		</div>
 		
 		<div class = "row">
 			<div class = "col-lg-3">
-				<a th:href = "@{/products/new}" class = "btn btn-primary btn-sm mb-3"> Adauga produs</a>
+				<a th:href = "@{/products/new}" class = "btn btn-primary btn-sm mb-3"> Add Product</a>
 			</div>
 		</div>
 		<table class = "table table-striped table-bordered">
 			<thead class = "table-dark">
 				<tr>
-				   <th>Numar Factura</th>
-				    <th> Data </th>
-					<th> Nume Produs</th>
-					<th> Cantitate Produs</th>
-					<th> Actiuni </th>
+				   <th>Bill Number</th>
+				    <th> Date </th>
+					<th> Product Name</th>
+					<th> Product quantity (SI)</th>
+					<th> Actions </th>
 				</tr>
 			</thead>
-			
+			   
 			<tbody>
 				<tr th:each = "product: ${products}">
-				    <td th:text = "${product.numarFactura}"></td>
-				    <td th:text = "${product.data}"></td>
+				    <td th:text = "${product.billNumber}"></td>
+				    <td th:text = "${product.date}"></td>
 					<td th:text = "${product.name}"></td>
-					<td th:text = "${product.cantitate}"></td>
+					<td th:text = "${product.quantity}"></td>
 					
 					<td>
 						<a th:href = "@{/products/edit/{id}(id=${product.id})}"
-						 class = "btn btn-primary">Actualizare Produs</a>
-						
+						 class = "btn btn-primary">Update Product</a>
+					
+					
 						<a th:href = "@{/products/delete/{id}(id=${product.id})}"
-						 class = "btn btn-danger">Scoatere produs</a>
+						 class = "btn btn-danger" onclick="return confirm('Delete this item?');">Remove Product</a>
 						 
 					</td>
 				</tr>
